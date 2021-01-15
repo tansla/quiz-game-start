@@ -11,9 +11,10 @@ class QuizBrain:
     def next_question(self):
         if len(self._question_list) >= self._question_number:
             question = self._question_list[self._question_number]
-            user_answer = input(f"Q.{self._question_number}: {question.text} (True/False)?").lower()
+            #user_answer = input(f"Q.{self._question_number}: {question.text} (True/False)?").lower()
             self._question_number += 1
-            self.check_answer(user_answer, question.answer)
+            #self.check_answer(user_answer, question.answer)
+            return f"Q.{self._question_number}: {question.text}", question.answer
         else:
             return "There is no more questions"
 
@@ -27,4 +28,7 @@ class QuizBrain:
         print("\n")
 
     def final_score(self):
-        return f"You're final score: {self._score}/{len(self._question_list)}"
+        return f"{self._score}/{len(self._question_list)}"
+
+    def get_score(self):
+        return f"{self._score}/{self._question_number - 1}"

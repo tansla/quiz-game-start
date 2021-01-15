@@ -1,5 +1,6 @@
 import requests
 from question_model import Question
+import html
 
 
 class QuestionBank:
@@ -17,8 +18,10 @@ class QuestionBank:
         trivia_respond.raise_for_status()
         self._question_data = trivia_respond.json()['results']
         self._question_bank = []
-        for question in self._question_data:
-            self._question_bank.append(Question(question["question"], question["correct_answer"]))
+        for item in self._question_data:
+            question = html.unescape(item["question"])
+            answer = html.unescape(item["correct_answer"])
+            self._question_bank.append(Question(question, answer))
 
     def get_all_questions(self):
         return self._question_bank
