@@ -23,6 +23,7 @@ class QuizBrain:
             print("You right!")
         else:
             print(f"You're wrong! The answer was: {str(correct_answer)}")
+        print(f"Your current score: {self.score}/{len(self.question_list)}")
         print("\n")
 
     def final_score(self):
