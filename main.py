@@ -1,11 +1,9 @@
-from data import question_data
-from question_model import Question
+from data import QuestionBank
 from quiz_brain import QuizBrain
 
-question_bank = []
-for question in question_data:
-    question_bank.append(Question(question["question"], question["correct_answer"]))
+number_of_questions = 10
 
+question_bank = QuestionBank(number_of_questions).get_all_questions()
 quiz = QuizBrain(question_bank)
 
 while quiz.still_has_questions():
